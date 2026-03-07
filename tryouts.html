@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tryouts 2025–2026 — BGGVK</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #F5C518;
+    --deep-gold: #C9960C;
+    --dark-gold: #8A6500;
+    --blue: #1A2B6D;
+    --deep-blue: #0D1A47;
+    --white: #FAFAFA;
+    --black: #080A10;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(8,10,16,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(245,197,24,0.1);
+  }
+  .nav-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+  .nav-back svg { width: 14px; height: 14px; }
+
+  /* ─── HERO ─── */
+  .tryout-hero {
+    min-height: 52vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, #0D1A47 0%, #080A10 55%, #1A2B6D 100%);
+    padding: 8rem 2rem 5rem;
+  }
+  .tryout-hero::before {
+    content: '';
+    position: absolute; inset: -50%;
+    background: repeating-linear-gradient(
+      55deg,
+      var(--gold) 0px, var(--gold) 2px,
+      transparent 2px, transparent 60px
+    );
+    opacity: 0.05;
+    animation: stripeScroll 20s linear infinite;
+  }
+  @keyframes stripeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120px); }
+  }
+  .tryout-hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .tryout-hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 0 80px rgba(245,197,24,0.25);
+    margin-bottom: 1rem;
+  }
+  .tryout-hero h1 .gold { color: var(--gold); }
+  .tryout-hero p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── CONTENT ─── */
+  .page-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+  }
+
+  /* ─── ALERT BANNER ─── */
+  .alert-banner {
+    background: linear-gradient(90deg, rgba(245,197,24,0.15), rgba(26,43,109,0.3));
+    border: 1px solid rgba(245,197,24,0.4);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.8rem;
+    margin-bottom: 4rem;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .alert-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .alert-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+  .alert-text strong { color: var(--gold); }
+
+  /* ─── TWO-COL LAYOUT ─── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* ─── LEFT: INFO ─── */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .info-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .gold-divider {
+    width: 50px; height: 3px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .info-body p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 1.1rem;
+  }
+  .info-body p strong { color: var(--gold); font-weight: 500; }
+
+  .requirements {
+    margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .req-item {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .req-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .req-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .req-text strong { color: var(--white); }
+
+  .coach-note {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    border-left: 3px solid var(--gold);
+    background: rgba(245,197,24,0.05);
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+  .coach-note a { color: var(--gold); text-decoration: none; }
+  .coach-note a:hover { text-decoration: underline; }
+
+  /* ─── RIGHT: SCHEDULE ─── */
+  .schedule-col {}
+
+  .timeline-group { margin-bottom: 3rem; }
+  .timeline-group-header {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid rgba(245,197,24,0.25);
+  }
+  .tg-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 0.25rem 0.7rem;
+  }
+  .tg-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .timeline-event {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.2s;
+  }
+  .timeline-event:last-child { border-bottom: none; }
+  .event-date-block {
+    text-align: center;
+    background: rgba(245,197,24,0.07);
+    border: 1px solid rgba(245,197,24,0.2);
+    padding: 0.6rem 0.4rem;
+  }
+  .event-date-block .day-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .event-date-block .day-month {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,197,24,0.6);
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .event-info {}
+  .event-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .event-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    margin-top: 5rem;
+    background: linear-gradient(135deg, rgba(245,197,24,0.1), rgba(26,43,109,0.25));
+    border: 1px solid rgba(245,197,24,0.3);
+    padding: 3rem;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .cta-section h2 .gold { color: var(--gold); }
+  .cta-section p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1.1rem 3rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .cta-btn:hover { background: var(--deep-gold); transform: translateY(-2px); }
+  .cta-note {
+    margin-top: 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(245,197,24,0.15);
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+  .footer-logo span { color: rgba(255,255,255,0.4); }
+  .footer-copy {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .main-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cta-section { padding: 2rem 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">BGGVK<span>.</span></a>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Main Site
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="tryout-hero">
+  <div class="tryout-hero-content">
+    <p class="hero-eyebrow">Bethpage Golden Girls Varsity Kickline</p>
+    <h1>Tryouts<br><span class="gold">2025–26</span></h1>
+    <p>JV &amp; Varsity · Open to All Bethpage Students</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-content">
+
+  <!-- ALERT -->
+  <div class="alert-banner">
+    <span class="alert-icon">📅</span>
+    <p class="alert-text">
+      <strong>Tryout dates: June 10, 11 &amp; 12</strong> at JFK Middle School, 3:30–5:50 PM.
+      Prep clinics begin <strong>May 20th</strong> — come learn the routine before tryouts!
+    </p>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- LEFT -->
+    <div>
+      <p class="section-label">Join the Team</p>
+      <h2 class="info-title">Everything<br>You Need<br>to Know</h2>
+      <div class="gold-divider"></div>
+
+      <div class="info-body">
+        <p>
+          Interested in becoming a <strong>Bethpage Golden Girl</strong>? Tryouts for both JV and Varsity Kickline are open to all Bethpage students. Start with our prep clinics — you'll learn the tryout routine and practice the required skills before the big day.
+        </p>
+        <p>
+          Tryout information and forms will be handed out at the first clinic.
+        </p>
+      </div>
+
+      <div class="requirements">
+        <div class="req-item">
+          <span class="req-icon">👟</span>
+          <p class="req-text"><strong>Bring sneakers &amp; jazz shoes</strong> to all clinics and tryouts.</p>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">📋</span>
+          <p class="req-text"><strong>FamilyID must be up to date</strong> — you will not be permitted to try out without it. Start updating it now.</p>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">📄</span>
+          <p class="req-text"><strong>Tryout forms</strong> will be distributed at the first clinic on May 20th.</p>
+        </div>
+        <div class="req-item">
+          <span class="req-icon">📅</span>
+          <p class="req-text"><strong>All three tryout dates are required.</strong> If you cannot attend one, explain in the interest form.</p>
+        </div>
+      </div>
+
+      <div class="coach-note">
+        Questions? Contact Coach Schnabel at<br>
+        <a href="/cdn-cgi/l/email-protection#95fee6f6fdfbf4f7f0f9d5f7f0e1fde5f4f2f0bbe2e6"><span class="__cf_email__" data-cfemail="315a4252595f5053545d7153544559415056541f4642">[email&#160;protected]</span></a>
+      </div>
+    </div>
+
+    <!-- RIGHT: SCHEDULE -->
+    <div class="schedule-col">
+
+      <div class="timeline-group">
+        <div class="timeline-group-header">
+          <span class="tg-badge">Clinics</span>
+          <span class="tg-label">JFK Middle School · 3:30–5:00 PM</span>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">20</span>
+            <span class="day-month">May</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Prep Clinic 1</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:00 PM</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">27</span>
+            <span class="day-month">May</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Prep Clinic 2</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:00 PM</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">3</span>
+            <span class="day-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Prep Clinic 3</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-group">
+        <div class="timeline-group-header">
+          <span class="tg-badge">Tryouts</span>
+          <span class="tg-label">JFK Middle School · 3:30–5:50 PM</span>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">10</span>
+            <span class="day-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Tryout Day 1</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:50 PM · JV &amp; Varsity</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">11</span>
+            <span class="day-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Tryout Day 2</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:50 PM · JV &amp; Varsity</p>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-date-block">
+            <span class="day-num">12</span>
+            <span class="day-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <p class="event-name">Tryout Day 3</p>
+            <p class="event-meta">JFK Middle School · 3:30–5:50 PM · JV &amp; Varsity</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to <span class="gold">Sign Up?</span></h2>
+    <p>Fill out the interest form to let us know you're coming. Tell us which clinics you can attend and whether you're trying out for JV or Varsity.</p>
+    <a href="https://docs.google.com/forms/d/1se3JbmezfpAKYTSE5vbI5x9YLLRLu-O8BeacJzIUYZc/viewform" target="_blank" class="cta-btn">
+      ✦ Fill Out the Interest Form
+    </a>
+    <p class="cta-note">Opens in Google Forms · Bethpage Union Free School District</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BGGVK<span> · Bethpage Golden Girls Varsity Ki
