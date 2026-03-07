@@ -18,7 +18,22 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--black);
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0px,
+        transparent 58px,
+        rgba(245,197,24,0.05) 58px,
+        rgba(245,197,24,0.05) 60px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(26,43,109,0.08) 80px,
+        rgba(26,43,109,0.08) 81px
+      ),
+      #080A10;
     color: var(--white);
     font-family: 'Barlow', sans-serif;
     overflow-x: hidden;
@@ -61,7 +76,10 @@
     display: flex; align-items: center; justify-content: center;
     text-align: center;
     position: relative; overflow: hidden;
-    background: linear-gradient(160deg, #0D1A47 0%, #080A10 55%, #1A2B6D 100%);
+    background:
+      radial-gradient(circle, rgba(245,197,24,0.1) 1px, transparent 1px),
+      linear-gradient(160deg, #0D1A47 0%, #080A10 55%, #1A2B6D 100%);
+    background-size: 28px 28px, 100% 100%;
     padding: 8rem 2rem 5rem;
   }
   .tryout-hero::before {
@@ -349,7 +367,8 @@
     text-transform: uppercase;
   }
 
-  @media (max-width: 768px) {
+
+    @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .main-grid { grid-template-columns: 1fr; gap: 3rem; }
     .cta-section { padding: 2rem 1.5rem; }
